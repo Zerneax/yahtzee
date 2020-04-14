@@ -1,3 +1,56 @@
 <section>
-  <p> game works !</p>
+  <div class="flex-row-space-around">
+    <ng-container *ngFor="let player of getPlayersOfTheGame()">
+      <label>{{player.name}}</label>
+    </ng-container>
+  </div>
+
+  <div class="flex-row-space-around m-3">
+    <div class="game-part m-3">
+      <label> dès </label>
+    </div>
+
+    <div class="game-part m-3">
+      <div class="flex-center">
+        <table class="score-table">
+          <thead>
+            <th>Figure</th>
+            <th>Valeur</th>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let figure of getScoreOfActivePlayer()?.firstPart">
+              <tr>
+                <td>{{figure.name}}</td>
+                <td class="flex-center">
+                  <input type="number" class="input-score" [value]="figure.value">
+                </td>
+                <td>
+                  <button class="btn btn-secondary" [disabled]="!figure.available">valider</button>
+                </td>
+              </tr>
+            </ng-container>
+            <tr class="text-center">
+              <td>Total I</td>
+              <td>0</td>
+            </tr>
+            <ng-container *ngFor="let figure of getScoreOfActivePlayer()?.secondPart">
+              <tr>
+                <td>{{figure.name}}</td>
+                <td class="flex-center">
+                  <input type="number" class="input-score" [value]="figure.value">
+                </td>
+                <td>
+                  <button class="btn btn-secondary" [disabled]="!figure.available">valider</button>
+                </td>
+              </tr>
+            </ng-container>
+            <tr class="text-center">
+              <td>Total II</td>
+              <td>0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </section>

@@ -1,0 +1,15 @@
+@import "../../../styles/variables.scss";
+
+.game-part {
+  width: 100%;
+  height: 40rem;
+}
+
+.score-table {
+  border: 1px solid $secondary-color;
+}
+
+.input-score {
+  width: 80%;
+  text-align: center;
+}

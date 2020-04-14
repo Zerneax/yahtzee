@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { Player } from 'src/app/models/player';
 import { Game } from 'src/app/models/game';
 import { Router } from '@angular/router';
+import { GameService } from 'src/app/services/game.service';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,8 @@ export class HomeComponent implements OnInit {
   public players: Array<string>;
 
   constructor(private formBuilder: FormBuilder,
-    private router: Router) { }
+    private router: Router,
+    private gameService: GameService) { }
 
   ngOnInit(): void {
       this.players = new Array<string>();
@@ -46,6 +48,7 @@ export class HomeComponent implements OnInit {
 
   createNewGame() {
       const game: Game = new Game(this.playersForm.get("players").value);
+      this.gameService.setGame(game);
       this.router.navigate(['game']);
   }
 

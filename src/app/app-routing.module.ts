@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { GameComponent } from './pages/game/game.component';
+import { GameGuard } from './services/game.guard';
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'game', component: GameComponent}
+  {path: 'game', component: GameComponent, canActivate: [GameGuard]}
 ];
 
 @NgModule({

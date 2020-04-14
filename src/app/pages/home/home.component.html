@@ -1,0 +1,20 @@
+<section>
+    <form class="flex-middle margin-top" [formGroup]="playersForm">
+      <h3 class="font-m text-primary">New Game</h3>
+
+      <div class="form-group mt-3">
+        <label for="nb-players">Number of players</label>
+        <input type="number" class="form-input" name="nb-players" min="1" max="4"
+          id="nb-players" value="0" formControlName="nbPlayers">
+      </div>
+
+      <div class="form-group mt-3" *ngIf="this.playersForm.get('players').value.length != 0">
+        <label for="nb-players">Players</label>
+        <ng-container *ngFor="let player of this.playersForm.get('players').value">
+          <input type="text" class="form-input" (keyup)="updatePlayerName(player, $event)">
+        </ng-container>
+      </div>
+
+      <button class="btn btn-primary mt-3" name="create-game" [disabled]="playersForm.invalid">create</button>
+    </form>
+</section>

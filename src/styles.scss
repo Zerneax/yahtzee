@@ -1,0 +1,85 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./styles/variables.scss";
+
+.text-primary {
+  color: $primary-color;
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+.text-xxl {
+  font-size: $font-xxl;
+}
+
+.text-xl {
+  font-size: $font-xl;
+}
+
+.text-l {
+  font-size: $font-l;
+}
+
+.text-m {
+  font-size: $font-m;
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+.m-3 {
+  margin: $primary-margin;
+}
+
+.m-2 {
+  margin: $secondary-margin;
+}
+
+.mt-3 {
+  margin-top: $primary-margin;
+}
+
+.mt-2 {
+  margin-top: $secondary-margin;
+}
+
+.flex-middle {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.form-input {
+  width: 20rem;
+}
+
+.btn {
+  border-radius: 5px;
+  color: $white-color;
+  font-size: $font-l;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  border-radius: 5px;
+  color: $white-color;
+  background-color: $disabled-color;
+  border-color: $disabled-color;
+  font-size: $font-l;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: $primary-color;
+  border: 2px solid $primary-color;
+}

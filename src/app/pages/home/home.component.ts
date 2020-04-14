@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Player } from 'src/app/models/player';
+import { Game } from 'src/app/models/game';
 
 @Component({
   selector: 'app-home',
@@ -42,7 +43,8 @@ export class HomeComponent implements OnInit {
   }
 
   createNewGame() {
-
+      const game: Game = new Game(this.playersForm.get("players").value);
+      console.log("game", game);
   }
 
 }

@@ -15,6 +15,7 @@
         </ng-container>
       </div>
 
-      <button class="btn btn-primary mt-3" name="create-game" [disabled]="playersForm.invalid">create</button>
+      <button class="btn btn-primary mt-3" name="create-game"
+        [disabled]="playersForm.invalid" (click)="createNewGame()">create</button>
     </form>
 </section>

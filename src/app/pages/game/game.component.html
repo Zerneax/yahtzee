@@ -1,7 +1,7 @@
 <section>
   <div class="flex-row-space-around">
     <ng-container *ngFor="let player of getPlayersOfTheGame()">
-      <label>{{player.name}}</label>
+      <label class="player-name" [ngClass]="{'active-player': player.id == game.idActivePlayer}">{{player.name}}</label>
     </ng-container>
   </div>
 
@@ -22,22 +22,22 @@
               <tr>
                 <td>{{figure.name}}</td>
                 <td class="flex-center">
-                  <input type="number" class="input-score" [value]="figure.value">
+                  <input type="number" class="input-score" [value]="figure.value" (keyup)="onChangeFigurePartI(figure, $event)">
                 </td>
                 <td>
-                  <button class="btn btn-secondary" [disabled]="!figure.available">valider</button>
+                  <button class="btn btn-secondary" [disabled]="!figure.available" (click)="validateFigure(figure)">valider</button>
                 </td>
               </tr>
             </ng-container>
             <tr class="text-center">
               <td>Total I</td>
-              <td>0</td>
+              <td>{{getScoreOfActivePlayer()?.totalI}}</td>
             </tr>
             <ng-container *ngFor="let figure of getScoreOfActivePlayer()?.secondPart">
               <tr>
                 <td>{{figure.name}}</td>
                 <td class="flex-center">
-                  <input type="number" class="input-score" [value]="figure.value">
+                  <input type="number" class="input-score" [value]="figure.value" (keyup)="onChangeFigurePartII(figure, $event)">
                 </td>
                 <td>
                   <button class="btn btn-secondary" [disabled]="!figure.available">valider</button>
@@ -46,7 +46,7 @@
             </ng-container>
             <tr class="text-center">
               <td>Total II</td>
-              <td>0</td>
+              <td>{{getScoreOfActivePlayer()?.totalII}}</td>
             </tr>
           </tbody>
         </table>

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Game } from '../models/game';
 
 @Injectable({
@@ -7,6 +7,7 @@ import { Game } from '../models/game';
 export class GameService {
 
   private game: Game;
+  public idActivePlayerEvent = new EventEmitter<number>();
 
   constructor() {}
 
@@ -16,5 +17,12 @@ export class GameService {
 
   setGame(game: Game): void {
     this.game = game;
+  }
+
+  changeActivePlayer(): void {
+    const lastIdPlayer = this.game.players.length - 1;
+    this.game.idActivePlayer =
+        this.game.idActivePlayer == lastIdPlayer ? 0 : ++this.game.idActivePlayer;
+    this.idActivePlayerEvent.emit(this.game.idActivePlayer);
   }
 }

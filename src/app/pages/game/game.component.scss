@@ -7,9 +7,19 @@
 
 .score-table {
   border: 1px solid $secondary-color;
+  width: 80%;
 }
 
 .input-score {
   width: 80%;
   text-align: center;
+}
+
+.player-name {
+  font-weight: bold;
+}
+
+.active-player {
+  text-decoration: underline;
+  color: $primary-color;
 }

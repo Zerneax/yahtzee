@@ -15,20 +15,20 @@ export class Score {
   }
 
   private initScore() {
-    this.firstPart.push(new Figure("Total de 1"));
-    this.firstPart.push(new Figure("Total de 2"));
-    this.firstPart.push(new Figure("Total de 3"));
-    this.firstPart.push(new Figure("Total de 4"));
-    this.firstPart.push(new Figure("Total de 5"));
-    this.firstPart.push(new Figure("Total de 6"));
+    this.firstPart.push(new Figure("Total de 1", 0, true));
+    this.firstPart.push(new Figure("Total de 2", 0, true));
+    this.firstPart.push(new Figure("Total de 3", 0, true));
+    this.firstPart.push(new Figure("Total de 4", 0, true));
+    this.firstPart.push(new Figure("Total de 5", 0, true));
+    this.firstPart.push(new Figure("Total de 6", 0, true));
 
-    this.secondPart.push(new Figure("Brelan"));
-    this.secondPart.push(new Figure("Carré"));
-    this.secondPart.push(new Figure("Full"));
-    this.secondPart.push(new Figure("Petite suite"));
-    this.secondPart.push(new Figure("Grande suite"));
-    this.secondPart.push(new Figure("Yams"));
-    this.secondPart.push(new Figure("Chance"));
+    this.secondPart.push(new Figure("Brelan", 0, true));
+    this.secondPart.push(new Figure("Carré", 0, true));
+    this.secondPart.push(new Figure("Full", 0, true));
+    this.secondPart.push(new Figure("Petite suite", 0, true));
+    this.secondPart.push(new Figure("Grande suite", 0, true));
+    this.secondPart.push(new Figure("Yams", 0, true));
+    this.secondPart.push(new Figure("Chance", 0, true));
   }
 
   public updateTotalI() {

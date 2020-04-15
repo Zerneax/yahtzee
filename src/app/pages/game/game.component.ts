@@ -12,38 +12,69 @@ import { Figure } from 'src/app/models/figure';
 })
 export class GameComponent implements OnInit {
 
-  public game: Game;
+  public figurePartI: Array<Figure>;
+  public figurePartII: Array<Figure>;
+  public totalI: number = 0;
+  public totalII: number = 0;
 
   constructor(private gameService: GameService) { }
 
   ngOnInit(): void {
-    this.game = this.gameService.getGame();
+    this.copyFigure();
+    this.calculateTotalI();
+    this.calculateTotalII();
 
     this.gameService.idActivePlayerEvent.subscribe((newActivePlayer: number) => {
-      this.game.idActivePlayer = newActivePlayer;
+      this.copyFigure();
+      this.calculateTotalI();
+      this.calculateTotalII();
     });
   }
 
   getPlayersOfTheGame(): Array<Player> {
-    return this.game.players;
+    return this.gameService.getPlayersOfTheGame();
   }
 
   getScoreOfActivePlayer(): Score {
-    return this.game.players[this.game.idActivePlayer].score;
+    return this.gameService.getScoreActivePlayer();
   }
 
-  validateFigure(figure: Figure): void {
-    figure.available = false;
-    this.gameService.changeActivePlayer();
+  validateFigureI(figure: Figure): void {
+    this.gameService.validateFigurePartI(figure);
+  }
+
+  validateFigureII(figure: Figure): void {
+    this.gameService.validateFigurePartII(figure);
   }
 
   onChangeFigurePartI(figure: Figure, event: any): void {
     figure.value = Number(event.target.value);
-    this.getScoreOfActivePlayer().updateTotalI();
+    this.calculateTotalI();
   }
 
   onChangeFigurePartII(figure: Figure, event: any): void {
     figure.value = Number(event.target.value);
-    this.getScoreOfActivePlayer().updateTotalII();
+    this.calculateTotalII();
+  }
+
+  calculateTotalI(): void {
+    let total = 0;
+    this.figurePartI.forEach(figure => total += figure.value);
+    this.totalI = total;
+  }
+
+  calculateTotalII(): void {
+    let total = 0;
+    this.figurePartII.forEach(figure => total += figure.value);
+    this.totalII = total;
+  }
+
+  copyFigure(): void {
+    this.figurePartI = this.gameService.getFigurePartIActivePLayer().map(
+      figure => new Figure(figure.name, figure.value, figure.available)
+    );
+    this.figurePartII = this.gameService.getFigurePartIIActivePLayer().map(
+      figure => new Figure(figure.name, figure.value, figure.available)
+    );
   }
 }

@@ -3,9 +3,9 @@ export class Figure {
   public value: number;
   public available: boolean;
 
-  constructor(name_: string) {
+  constructor(name_: string, value_: number, available_: boolean) {
     this.name = name_;
-    this.value = 0;
-    this.available = true;
+    this.value = value_;
+    this.available = available_;
   }
 }

@@ -33,6 +33,10 @@ export class GameService {
     this.idActivePlayerEvent.emit(this.game.idActivePlayer);
   }
 
+  getIdActivePlayer(): number {
+    return this.game.idActivePlayer;
+  }
+
   getScoreActivePlayer(): Score {
     return this.game.players[this.game.idActivePlayer].score;
   }

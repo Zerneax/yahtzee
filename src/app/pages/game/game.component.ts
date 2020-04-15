@@ -77,4 +77,8 @@ export class GameComponent implements OnInit {
       figure => new Figure(figure.name, figure.value, figure.available)
     );
   }
+
+  isActivePLayer(id: number): boolean {
+    return id === this.gameService.getIdActivePlayer();
+  }
 }

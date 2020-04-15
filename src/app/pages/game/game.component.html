@@ -1,7 +1,7 @@
 <section>
   <div class="flex-row-space-around">
     <ng-container *ngFor="let player of getPlayersOfTheGame()">
-      <label class="player-name" [ngClass]="{'active-player': true}">{{player.name}}</label>
+      <label class="player-name" [ngClass]="{'active-player': isActivePLayer(player.id)}">{{player.name}}</label>
     </ng-container>
   </div>
 
@@ -25,7 +25,7 @@
                   <input type="number" class="input-score" [value]="figure.value" [disabled]="!figure.available" (keyup)="onChangeFigurePartI(figure, $event)">
                 </td>
                 <td>
-                  <button class="btn btn-secondary" [disabled]="!figure.available" (click)="validateFigureI(figure)">valider</button>
+                  <button class="btn btn-secondary" [hidden]="!figure.available" (click)="validateFigureI(figure)">valider</button>
                 </td>
               </tr>
             </ng-container>

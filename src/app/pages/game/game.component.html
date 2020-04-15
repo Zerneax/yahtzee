@@ -1,4 +1,4 @@
-<section>
+<section *ngIf="!isEndOfGame()">
   <div class="flex-row-space-around">
     <ng-container *ngFor="let player of getPlayersOfTheGame()">
       <label class="player-name" [ngClass]="{'active-player': isActivePLayer(player.id)}">{{player.name}}</label>
@@ -6,8 +6,15 @@
   </div>
 
   <div class="flex-row-space-around m-3">
-    <div class="game-part m-3">
-      <label> dès </label>
+    <div class="game-part m-3 text-center">
+      <button class="btn btn-primary" [disabled]="throw == 3" (click)="rollDices()"> lancer les dès</button>
+      <div class="dices" *ngIf="throw > 0">
+        <ng-container *ngFor="let dice of dices">
+          <div class="dice-first-line">
+            <label class="dice" [ngClass]="{'dice-lock': dice.lock}" (click)="dice.lock = !dice.lock"> {{dice.value}} </label>
+          </div>
+        </ng-container>
+      </div>
     </div>
 
     <div class="game-part m-3">
@@ -52,5 +59,14 @@
         </table>
       </div>
     </div>
+  </div>
+</section>
+
+<section *ngIf="isEndOfGame()">
+  <div class="flex-middle">
+    <p class="text-primary text-xl">Fin de la partie</p>
+    <ng-container *ngFor="let player of getPlayersOfTheGame()">
+      <p> {{player.name}} : {{calculateScore(player)}}</p>
+    </ng-container>
   </div>
 </section>

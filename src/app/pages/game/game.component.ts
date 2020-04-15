@@ -4,6 +4,7 @@ import { Game } from 'src/app/models/game';
 import { Player } from 'src/app/models/player';
 import { Score } from 'src/app/models/score';
 import { Figure } from 'src/app/models/figure';
+import { Dice } from 'src/app/models/dice';
 
 @Component({
   selector: 'app-game',
@@ -16,15 +17,20 @@ export class GameComponent implements OnInit {
   public figurePartII: Array<Figure>;
   public totalI: number = 0;
   public totalII: number = 0;
+  public dices: Array<Dice>;
+  public throw: number;
 
   constructor(private gameService: GameService) { }
 
   ngOnInit(): void {
+    this.dices = this.gameService.getDices();
+    this.throw = 0;
     this.copyFigure();
     this.calculateTotalI();
     this.calculateTotalII();
 
     this.gameService.idActivePlayerEvent.subscribe((newActivePlayer: number) => {
+      this.throw = 0;
       this.copyFigure();
       this.calculateTotalI();
       this.calculateTotalII();
@@ -80,5 +86,30 @@ export class GameComponent implements OnInit {
 
   isActivePLayer(id: number): boolean {
     return id === this.gameService.getIdActivePlayer();
+  }
+
+  rollDices(): void {
+    this.dices.forEach((dice) => {
+      if (!dice.lock)
+        dice.value = this.getRandomIntInclusive(1, 6);
+    });
+    this.throw++;
+  }
+
+  getRandomIntInclusive(min, max): number {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min +1)) + min;
+  }
+
+  isEndOfGame(): boolean {
+    return this.gameService.isEndOfGame();
+  }
+
+  calculateScore(player: Player): number {
+    let totalI = player.score.totalI;
+    let bonus = totalI >= 63 ? 35 : 0;
+    let totalII = player.score.totalII;
+    return totalI + bonus + totalII;
   }
 }

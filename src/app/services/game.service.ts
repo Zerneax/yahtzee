@@ -3,6 +3,7 @@ import { Game } from '../models/game';
 import { Figure } from '../models/figure';
 import { Score } from '../models/score';
 import { Player } from '../models/player';
+import { Dice } from '../models/dice';
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +28,19 @@ export class GameService {
   }
 
   changeActivePlayer(): void {
+    this.resetDice();
     const lastIdPlayer = this.game.players.length - 1;
-    this.game.idActivePlayer =
-        this.game.idActivePlayer == lastIdPlayer ? 0 : ++this.game.idActivePlayer;
+    if(lastIdPlayer == this.game.idActivePlayer) {
+      this.game.idActivePlayer = 0;
+      this.game.turn --;
+    } else {
+      this.game.idActivePlayer++;
+    }
     this.idActivePlayerEvent.emit(this.game.idActivePlayer);
+  }
+
+  resetDice(): void {
+    this.game.dices.forEach(dice => dice.lock = false);
   }
 
   getIdActivePlayer(): number {
@@ -69,4 +79,13 @@ export class GameService {
     this.getScoreActivePlayer().updateTotalI();
     this.getScoreActivePlayer().updateTotalII();
   }
+
+  getDices(): Array<Dice> {
+    return this.game.dices;
+  }
+
+  isEndOfGame(): boolean {
+    return this.game.turn == 0;
+  }
+
 }

@@ -5,6 +5,7 @@ import { Player } from 'src/app/models/player';
 import { Score } from 'src/app/models/score';
 import { Figure } from 'src/app/models/figure';
 import { Dice } from 'src/app/models/dice';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -20,7 +21,8 @@ export class GameComponent implements OnInit {
   public dices: Array<Dice>;
   public throw: number;
 
-  constructor(private gameService: GameService) { }
+  constructor(private gameService: GameService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.dices = this.gameService.getDices();
@@ -111,5 +113,9 @@ export class GameComponent implements OnInit {
     let bonus = totalI >= 63 ? 35 : 0;
     let totalII = player.score.totalII;
     return totalI + bonus + totalII;
+  }
+
+  goHome(): void {
+    this.router.navigate(['']);
   }
 }

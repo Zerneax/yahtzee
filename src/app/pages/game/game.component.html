@@ -68,5 +68,9 @@
     <ng-container *ngFor="let player of getPlayersOfTheGame()">
       <p> {{player.name}} : {{calculateScore(player)}}</p>
     </ng-container>
+
+    <div class="flex-center m-3">
+      <button class="btn btn-primary" (click)="goHome()">Revenir à l'accueil</button>
+    </div>
   </div>
 </section>

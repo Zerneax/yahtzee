@@ -1,5 +1,6 @@
 import { Player } from './player';
 import { Dice } from './dice';
+import { Constants } from './constants';
 
 export class Game {
   public turn: number;
@@ -8,7 +9,7 @@ export class Game {
   public dices: Array<Dice>;
 
   constructor(players_: Array<Player>) {
-    this.turn = 13; // end of game when each figure is complete
+    this.turn = Constants.TURN; // end of game when each figure is complete
     this.players = players_;
     this.idActivePlayer = 0;
     this.initDices();
@@ -16,7 +17,7 @@ export class Game {
 
   initDices(): void{
     this.dices = new Array<Dice>();
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < Constants.NB_DICES; i++) {
       this.dices.push(new Dice());
     }
   }

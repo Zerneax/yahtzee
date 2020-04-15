@@ -1,4 +1,5 @@
 import { Figure } from './figure';
+import { Constants } from './constants';
 
 export class Score {
   public firstPart: Array<Figure>;
@@ -36,7 +37,7 @@ export class Score {
     this.firstPart.forEach(figure => {
       total += figure.value;
     });
-    this.totalI = total >= 63 ? total + 35 : total;
+    this.totalI = total >= Constants.BONUS_CAP ? total + Constants.BONUS : total;
   }
 
   public updateTotalII() {

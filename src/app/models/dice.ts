@@ -3,7 +3,7 @@ export class Dice {
   public lock: boolean;
 
   constructor() {
-    this.value = 1;
+    this.value = undefined;
     this.lock = false;
   }
 }

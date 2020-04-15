@@ -6,6 +6,7 @@ import { Score } from 'src/app/models/score';
 import { Figure } from 'src/app/models/figure';
 import { Dice } from 'src/app/models/dice';
 import { Router } from '@angular/router';
+import { Constants } from 'src/app/models/constants';
 
 @Component({
   selector: 'app-game',
@@ -110,12 +111,16 @@ export class GameComponent implements OnInit {
 
   calculateScore(player: Player): number {
     let totalI = player.score.totalI;
-    let bonus = totalI >= 63 ? 35 : 0;
+    let bonus = totalI >= Constants.BONUS_CAP ? Constants.BONUS : 0;
     let totalII = player.score.totalII;
     return totalI + bonus + totalII;
   }
 
   goHome(): void {
     this.router.navigate(['']);
+  }
+
+  isMaxThrow(): boolean {
+    return this.throw == Constants.THROW_MAX;
   }
 }

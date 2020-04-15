@@ -7,7 +7,7 @@
 
   <div class="flex-row-space-around m-3">
     <div class="game-part m-3 text-center">
-      <button class="btn btn-primary" [disabled]="throw == 3" (click)="rollDices()"> lancer les dès</button>
+      <button class="btn btn-primary" [disabled]="isMaxThrow()" (click)="rollDices()"> lancer les dès</button>
       <div class="dices" *ngIf="throw > 0">
         <ng-container *ngFor="let dice of dices">
           <div class="dice-first-line">

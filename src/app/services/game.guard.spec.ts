@@ -1,12 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
 import { GameGuard } from './game.guard';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('GameGuard', () => {
   let guard: GameGuard;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+        imports: [RouterTestingModule]
+    });
     guard = TestBed.inject(GameGuard);
   });
 

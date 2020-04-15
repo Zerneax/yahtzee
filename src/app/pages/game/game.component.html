@@ -44,10 +44,10 @@
               <tr>
                 <td>{{figure.name}}</td>
                 <td class="flex-center">
-                  <input type="number" class="input-score" [value]="figure.value" (keyup)="onChangeFigurePartII(figure, $event)">
+                  <input type="number" class="input-score" [value]="figure.value" [disabled]="!figure.available" (keyup)="onChangeFigurePartII(figure, $event)">
                 </td>
                 <td>
-                  <button class="btn btn-secondary" [disabled]="!figure.available" (click)="validateFigureII(figure)">valider</button>
+                  <button class="btn btn-secondary" [hidden]="!figure.available" (click)="validateFigureII(figure)">valider</button>
                 </td>
               </tr>
             </ng-container>

@@ -110,10 +110,7 @@ export class GameComponent implements OnInit {
   }
 
   calculateScore(player: Player): number {
-    let totalI = player.score.totalI;
-    let bonus = totalI >= Constants.BONUS_CAP ? Constants.BONUS : 0;
-    let totalII = player.score.totalII;
-    return totalI + bonus + totalII;
+    return player.score.totalI + player.score.totalII;
   }
 
   goHome(): void {

@@ -1,3 +1,10 @@
+@import "../../../styles/variables.scss";
+
 .margin-top {
   margin-top: 4rem;
+}
+
+.btn-create-game {
+  font-size: $font-l;
+  font-weight: bold;
 }

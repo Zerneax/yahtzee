@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./styles/variables.scss";
+@import "./styles/dice.css";
 
 .text-primary {
   color: $primary-color;
@@ -29,6 +30,10 @@
   text-align: center;
 }
 
+.text-bold {
+  font-weight: bold;
+}
+
 
 .m-3 {
   margin: $primary-margin;
@@ -36,6 +41,10 @@
 
 .m-2 {
   margin: $secondary-margin;
+}
+
+.m-1 {
+  margin: $tertiary-margin;
 }
 
 .mt-3 {
@@ -80,6 +89,8 @@
   color: $white-color;
   font-size: $font-l;
   cursor: pointer;
+  width: 12rem;
+  height: 2rem;
 }
 
 .btn:disabled {
@@ -99,4 +110,8 @@
 .btn-secondary {
   background-color: $secondary-color;
   border: 2px solid $secondary-color;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }

@@ -7,6 +7,7 @@
 
 .score-table {
   border: 1px solid $secondary-color;
+  border-radius: 5px;
   width: 80%;
 }
 
@@ -39,12 +40,15 @@
 
 .dice {
   cursor: pointer;
+  font-size: 4rem;
+  max-width: 10%;
 }
 
 .dice-lock {
-  color: $secondary-color;
+  //color: $secondary-color;
+  filter: contrast(50%);
 }
-//
-// .dice-second-line {
-//   flex-basis: 45%;
-// }
+
+.btn-validate {
+  width: 6rem;
+}

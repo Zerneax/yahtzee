@@ -11,11 +11,11 @@
       <div class="form-group mt-3" *ngIf="this.playersForm.get('players').value.length != 0">
         <label for="nb-players">Players</label>
         <ng-container *ngFor="let player of this.playersForm.get('players').value">
-          <input type="text" class="form-input" (keyup)="updatePlayerName(player, $event)">
+          <input type="text" class="form-input m-1" (keyup)="updatePlayerName(player, $event)">
         </ng-container>
       </div>
 
-      <button class="btn btn-primary mt-3" name="create-game"
+      <button class="btn btn-primary mt-3 btn-create-game" name="create-game"
         [disabled]="playersForm.invalid" (click)="createNewGame()">create</button>
     </form>
 </section>
